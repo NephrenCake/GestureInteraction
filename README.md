@@ -1,37 +1,17 @@
-# 手势识别与交互
+# 基于手部骨架姿态识别的增强现实交互系统
 
 #### 介绍
-第十四届大学生计算机设计大赛
+第十四届大学生计算机设计大赛参赛作品。
 
-#### 软件架构
-软件架构说明
+4.16 初赛提交，后续会继续更新。
 
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1.  handpose_setter.py：可以设置自定义的手势类型。
+2.  inference.py：运行项目主体推理。
 
 
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+####  参考
+1.  YOLOv5 https://github.com/ultralytics/yolov5
+2.  关键点检测 https://codechina.csdn.net/EricLee/handpose_x

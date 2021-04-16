@@ -240,5 +240,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# 个人添加
 Abyss/inference/
+Abyss/UI/
 .idea/
+Abyss/test.py
+Abyss/ui_test.py
