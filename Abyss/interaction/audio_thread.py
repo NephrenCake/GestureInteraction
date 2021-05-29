@@ -41,3 +41,20 @@ def play_sounds(act):
             except Exception as e:
                 print(e)
             temp.clear()
+
+
+def play_piano(data):
+    temp = []
+    while True:
+        time.sleep(0.01)
+        if len(data) != 0:
+            for a in data:
+                if a not in temp:
+                    temp.append(a)
+            data.clear()
+        for t in temp:
+            try:
+                playsound('inference/audio/' + t + '.mp3')
+            except Exception as e:
+                print(e)
+            temp.clear()

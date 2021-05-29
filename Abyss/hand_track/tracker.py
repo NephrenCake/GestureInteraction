@@ -1,9 +1,12 @@
 # -- coding: utf-8 --
 import json
+
+import cv2
 import numpy as np
 
-from Abyss.hand_track.angle_util import pose_to_angles
+from Abyss.hand_track.angle_util import pose_to_angles, piano_judge
 from Abyss.hand_track.draw_util import draw
+from Abyss.interaction.audio_thread import play_piano
 
 
 class Tracker:
@@ -31,6 +34,11 @@ class Tracker:
         self.plot_cache = [[None, None],
                            [None, None]]
 
+        # 多线程
+        self.piano_data = []
+        play_piano(self.piano_data)
+        self.circle_list = []
+
     def update(self, det, key_point_list):
         # 返回格式
         for n, (*xyxy, conf, cls) in enumerate(det):  # 对可能有两只手进行遍历，六个参数
@@ -38,6 +46,11 @@ class Tracker:
             iou: np.ndarray = self.__compute_iou(x1, y1, x2, y2)  # 获得一个二维数组，分别对应id0/1的手势的iou
             track_id, iou_val = iou.argmax(), iou.max()  # 获得iou最大对应的手 初步追踪
             pose: int = self.__compute_pose(key_point_list[n])
+
+            # piano
+            piano = True
+            if piano:
+                self.circle_list = piano_judge(key_point_list[n], self.piano_data)
 
             # 更新内部追踪
             if iou_val == 0:  # 当前手对于之前的两只手都匹配不上
@@ -66,7 +79,9 @@ class Tracker:
         for track_id in range(0, 2):
             if self.plot_cache[track_id][0] is not None:
                 draw(im0, self.plot_cache[track_id][0], self.plot_cache[track_id][1])
-                pass
+        for point in self.circle_list:
+            cv2.circle(im0, point, 3, (point[0] % 255, (point[1] % 255 + point[0] % 255) % 255, point[1] % 255),
+                       2)
 
     def get_order(self):
         """

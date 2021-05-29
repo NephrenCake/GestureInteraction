@@ -32,3 +32,26 @@ def pose_to_angles(key_point):
     a5 = vectors_to_angle(key_point[0], key_point[17], key_point[18], key_point[20])
     a6 = vectors_to_angle(key_point[0], key_point[4], key_point[0], key_point[8])  # 大拇指与食指
     return np.array([a1, a2, a3, a4, a5, a6], dtype=np.float32)
+
+
+def get_dis(p1, p2):
+    return (p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2
+
+
+def piano_judge(key_point, piano_data):
+    m = 25
+    circle = []
+    if get_dis(key_point[7], key_point[8]) < m:
+        piano_data.append("1")
+        circle.append(key_point[8])
+    if get_dis(key_point[11], key_point[12]) < m:
+        piano_data.append("2")
+        circle.append(key_point[12])
+    if get_dis(key_point[15], key_point[16]) < m:
+        piano_data.append("3")
+        circle.append(key_point[16])
+    if get_dis(key_point[19], key_point[20]) < m:
+        piano_data.append("4")
+        circle.append(key_point[20])
+
+    return circle

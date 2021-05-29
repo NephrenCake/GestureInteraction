@@ -197,7 +197,7 @@ def detect(opt):
 def parse_argument():
     parser = argparse.ArgumentParser()
     # file/folder, 0-webcam。不支持图片格式              inference/input/test_video2.mp4
-    parser.add_argument('--source', type=str, default='inference/input/show_video6.mp4', help='source')
+    parser.add_argument('--source', type=str, default='inference/input/piano.mp4', help='source')
     # 输出文件夹
     parser.add_argument('--output', type=str, default='inference/output', help='output folder')
     # 输出视频格式
@@ -211,7 +211,7 @@ def parse_argument():
     # 是否在ui中展示==不要修改==
     parser.add_argument('--ui', default=None)
 
-    # yolov5模型路径                                                  hand_v5s/best.pt   best_YOLOv5l.pt best_yolo5s_half
+    # yolov5模型路径           hand_v5s/best   best_YOLOv5l  best_yolo5s_half  yolov5l_best
     parser.add_argument('--yolov5_weights', type=str, default='inference/weights/hand_weight/best_YOLOv5l.pt')
     # yolov5输入尺寸
     parser.add_argument('--yolov5_img_size', type=int, default=640, help='inference size (pixels)')
