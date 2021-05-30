@@ -49,7 +49,7 @@ class Tracker:
             pose: int = self.__compute_pose(key_point_list[n])
 
             # piano
-            piano = True
+            piano = False
             if piano:
                 self.circle_list = piano_judge(key_point_list[n], self.piano_data)
 
