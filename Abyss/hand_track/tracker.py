@@ -1,4 +1,5 @@
 # -- coding: utf-8 --
+import _thread
 import json
 
 import cv2
@@ -36,7 +37,7 @@ class Tracker:
 
         # 多线程
         self.piano_data = []
-        play_piano(self.piano_data)
+        _thread.start_new_thread(play_piano, (self.piano_data,))
         self.circle_list = []
 
     def update(self, det, key_point_list):
@@ -79,9 +80,11 @@ class Tracker:
         for track_id in range(0, 2):
             if self.plot_cache[track_id][0] is not None:
                 draw(im0, self.plot_cache[track_id][0], self.plot_cache[track_id][1])
-        for point in self.circle_list:
-            cv2.circle(im0, point, 3, (point[0] % 255, (point[1] % 255 + point[0] % 255) % 255, point[1] % 255),
-                       2)
+        for i, point in enumerate(self.circle_list):
+            x = int(point[0])
+            y = int(point[1])
+            c = int(255 * (i + 1) / 6)
+            cv2.circle(im0, (x, y), 25, (c, 255 - c, abs(122 - c)), 5)
 
     def get_order(self):
         """

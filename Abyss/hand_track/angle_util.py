@@ -39,18 +39,18 @@ def get_dis(p1, p2):
 
 
 def piano_judge(key_point, piano_data):
-    m = 25
+    m = 676
     circle = []
     if get_dis(key_point[7], key_point[8]) < m:
         piano_data.append("1")
         circle.append(key_point[8])
-    if get_dis(key_point[11], key_point[12]) < m:
+    elif get_dis(key_point[11], key_point[12]) < m:
         piano_data.append("2")
         circle.append(key_point[12])
-    if get_dis(key_point[15], key_point[16]) < m:
+    elif get_dis(key_point[15], key_point[16]) < m:
         piano_data.append("3")
         circle.append(key_point[16])
-    if get_dis(key_point[19], key_point[20]) < m:
+    elif get_dis(key_point[19], key_point[20]) < m:
         piano_data.append("4")
         circle.append(key_point[20])
 
