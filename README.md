@@ -23,6 +23,8 @@
    
 3. 模型权重与素材文件: [3fui](https://pan.baidu.com/s/1hJrEA3KU9_VKYF6O_eFB4Q)
 
+4. 展示视频: https://www.bilibili.com/video/BV1H64y1y7X1/
+
 
 ## 参考
 
