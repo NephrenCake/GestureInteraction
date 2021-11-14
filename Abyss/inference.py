@@ -1,7 +1,6 @@
 # -- coding: utf-8 --
 import sys
 
-from Abyss.UI.ui_utils import update_video
 from Abyss.interaction.interaction import Interactor
 from hand_key.models.resnet import resnet50
 from hand_track.tracker import Tracker
@@ -162,13 +161,10 @@ def detect(opt):
             print('%s (%.3fs)' % (s, t2 - t1))  # 时间
 
             # Stream results  是否在ui界面中展示
-            if view and opt.ui is None:
+            if view is None:
                 cv2.imshow(p, im0)
                 if cv2.waitKey(1) == ord('q'):  # q to quit
                     raise StopIteration
-
-            if opt.ui is not None:
-                update_video(opt.ui, im0)
 
             # Save results (image with detections)
             if save:
@@ -208,8 +204,6 @@ def parse_argument():
     parser.add_argument("--save", type=str, default=False, help='save results')
     # 是否使用显卡+半精度
     parser.add_argument('--device', default='0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
-    # 是否在ui中展示==不要修改==
-    parser.add_argument('--ui', default=None)
 
     # yolov5模型路径           hand_v5s/best   best_YOLOv5l  best_yolo5s_half  yolov5l_best
     parser.add_argument('--yolov5_weights', type=str, default='inference/weights/hand_weight/best_YOLOv5l.pt')
