@@ -20,11 +20,8 @@
 ## 使用说明
 
 1. handpose_setter.py：可以设置自定义的手势类型。
-   
 2. inference.py：运行项目主体推理。
-   
 3. 模型权重与素材文件: [3fui](https://pan.baidu.com/s/1hJrEA3KU9_VKYF6O_eFB4Q)
-
 4. 展示视频: https://www.bilibili.com/video/BV1H64y1y7X1/
 
 ## 思路概述
@@ -39,5 +36,4 @@
 ## 参考
 
 1.  YOLOv5: https://github.com/ultralytics/yolov5
-    
 2.  关键点检测: https://codechina.csdn.net/EricLee/handpose_x
